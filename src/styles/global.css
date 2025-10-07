@@ -1,55 +1,43 @@
 @import "tailwindcss";
 @import "./typography.css" layer(components);
-@variant dark (&:where(.dark, .dark *));
 
 :root {
-  color-scheme: light dark;
-}
-.dark {
   color-scheme: dark;
-}
-.light {
-  color-scheme: light;
+
+  --color-bg: radial-gradient(
+    ellipse 80% 80% at 50% -20%, 
+    #161d36 0%, 
+    #0d1223 100%
+  );
+  --color-link: #0EF6F5;
+  --color-muted-text: #F6F6F6;
 }
 
-@variant dark {
-  &:where(.dark, .dark *) {
-    @slot;
+@layer components {
+  .card-base {
+    @apply rounded-xl overflow-hidden bg-[#050915] transition shadow-[0px_4px_15px_0px_rgba(0,_0,_0,_0.7)];
   }
-  @media (prefers-color-scheme: dark) {
-    &:where(.system, .system *) {
-      @slot;
-    }
-  }
+
 }
 
-@theme {
-  --color-bg: var(--color-neutral-50);
-  --color-link: oklch(46.97% 0.2734 267.56);
-  --color-muted-text: var(--color-neutral-700);
-
-  --color-dark-bg: var(--color-neutral-950);
-  --color-dark-link: oklch(73.9% 0.1387 282.47);
-  --color-dark-muted-text: var(--color-neutral-300);
+@layer base {
+  body {
+    background: var(--color-bg);    
+    color: var(--color-muted-text);
+    font-family: theme("fontFamily.sans"); /* o el que uses */
+  }
+  
 }
 
 /* ensure .link and typography.css are consistent */
 .link {
-  --prose-link-color: var(--color-link);
-  --prose-link-underline-color: var(--color-link);
-
   color: var(--prose-link-color);
   font-weight: var(--font-weight-semibold);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: var(--prose-link-underline-color);
+  text-decoration: none;
+  text-underline-offset: 2px;  
   text-decoration-thickness: 1px;
   & code {
     font-weight: var(--font-weight-semibold);
   }
 }
 
-.dark .link {
-  --prose-link-color: var(--color-dark-link);
-  --prose-link-underline-color: var(--color-dark-link);
-}

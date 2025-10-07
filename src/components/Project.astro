@@ -1,0 +1,38 @@
+---
+import Chevron from "./icons/Chevron.astro";
+import Chevronpink from "./icons/Chevronpink.astro"
+const { project } = Astro.props;
+---
+
+<section class="card-base relative flex w-full flex-col-reverse md:flex-col">
+  <div class="w-full p-4">
+    <li>
+      <!-- Title -->
+      <a
+        href={project.data.href}
+        class="link mb-1 flex w-full flex-col text-lg font-bold no-underline sm:flex-row sm:items-center sm:justify-between md:text-2xl"
+      >
+      <div class="relative ml-8 mt-2 mb-1 before:w-1 
+            before:h-4.5 before:rounded-md before:bg-[#E53A7A] before:absolute 
+            before:left-[-16px] before:top-2">
+            <span class="hover:text-[#E53A7A]">{project.data.title}</span>
+      </div>
+      </a>
+      <!--- Description -->
+      <div class="pl-5 mb-3.5 pr-4">
+        <span class="text-sm text-neutral-200">{project.data.description}</span>
+      </div>
+      <!-- Chevron -->
+       <a href={project.data.href}
+          class="absolute right-2 top-2 bottom-2 p-1
+         flex items-center justify-center
+         rounded-md bg-[#582c3d]
+         hover:bg-[#5e3846] active:bg-[#395366] active:scale-95"
+       >
+        <span>
+            <Chevronpink class="size-5" />
+        </span>
+       </a>
+    </li>
+  </div>
+</section>

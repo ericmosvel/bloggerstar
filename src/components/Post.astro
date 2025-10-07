@@ -1,19 +1,53 @@
 ---
 import { formatDate } from "@/lib/util";
+import Chevron from "./icons/Chevron.astro";
+import Calendar from "./icons/Calendar.astro"
 
 const { post } = Astro.props;
+
 ---
 
-<li>
-  <a
-    href={`/blog/${post.id}`}
-    class="link flex w-full flex-col sm:flex-row sm:items-center sm:justify-between"
-  >
-    <span>{post.data.title}</span>
-    <div
-      class="text-muted-text dark:text-dark-muted-text text-sm font-normal decoration-0"
-    >
-      {formatDate(post.data.publicationDate)}
-    </div>
-  </a>
-</li>
+<section class="w-full card-base flex flex-col-reverse md:flex-col relative">
+  <div class="p-4 w-full">
+    <li>
+      <!-- Title -->
+      <a
+        href={`/blog/${post.id}`}
+        class="md:text-2xl text-lg font-bold mb-1 link flex w-full flex-col 
+        sm:flex-row sm:items-center sm:justify-between no-underline"
+      >
+        <div class="relative ml-8 mt-2 mb-1 before:w-1 before:h-4.5
+              before:rounded-md before:bg-teal-400 before:absolute before:left-[-16px] before:top-2">
+              <span class="hover:text-[#0EF6F5]">{post.data.title}</span>
+        </div>            
+      </a>
+      <!-- Date -->
+      <div class="flex flex-wrap text-neutral-400 items-center gap-4 gap-x-4 gap-y-2 mb-4">
+        <div class="flex items-center pl-5">
+          <Calendar class="size-5"/>
+          <span class="text-sm font-medium pl-2 decoration-0">
+            {formatDate(post.data.publicationDate)}
+          </span>
+        </div>
+      </div>
+      <!-- Description -->
+      <div class="pl-5 mb-3.5 pr-4">
+        <span class="text-sm text-neutral-200">{post.data.description}</span>
+      </div>         
+      <!-- Chevron -->
+      <a 
+        href={`/blog/${post.id}`} 
+        class="absolute right-2 top-2 bottom-2 p-1
+         flex items-center justify-center
+         rounded-md bg-[#243846]
+         hover:bg-[#2e4556] active:bg-[#395366] active:scale-95
+        ">
+        <span >
+          <Chevron class="size-5" />
+        </span>        
+      </a>
+    </li>    
+  </div>  
+</section>
+
+

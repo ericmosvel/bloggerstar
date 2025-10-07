@@ -1,22 +1,30 @@
 ---
 import { NAV_LINKS, SITE } from "@/siteConfig.ts";
+
+import Star from "./icons/Star.astro";
 ---
 
 <header
-  class="mx-auto flex max-w-screen-sm flex-wrap items-center justify-between p-3 pb-8 font-sans sm:p-6"
+  class="mx-auto flex max-w-6xl flex-wrap items-center 
+  justify-between pb-8 px-6 py-4 font-sans md:px-10 md:py-16"
 >
+  <div class="flex flex-row justify-start items-center gap-2">
+    <Star class="md:size-20 size-10"/>
   <a
     href="/"
-    class="text-lg font-semibold text-black sm:text-xl dark:text-white"
+    class="md:text-4xl text-xl font-semibold text-white"
     >{SITE.title}</a
   >
+
+  </div>
+  
   <nav>
     <ul class="flex list-none items-center gap-2 p-0 sm:gap-3">
       {
         Object.keys(NAV_LINKS).map((navItemKey) => {
           return (
             <li>
-              <a href={NAV_LINKS[navItemKey].path} class="prose">
+              <a href={NAV_LINKS[navItemKey].path} class="prose font-bold hover:text-[#E53A7A] hover:font-bold">
                 {NAV_LINKS[navItemKey].label}
               </a>
             </li>

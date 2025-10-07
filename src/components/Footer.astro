@@ -1,13 +1,18 @@
 ---
 import { SITE } from "@/siteConfig";
-import ThemeToggle from "@/components/ThemeToggle.astro";
+import SocialLinks from "./SocialLinks.astro";
 
 const year = new Date().getFullYear();
+
+// w-full mx-auto flex justify-center mt-16 mb-10 gap-4 md:pl-0 lg:max-w-4xl
 ---
 
 <footer
-  class="mx-auto flex w-full flex-col items-start gap-6 pt-16 pb-24 sm:flex-row sm:items-center sm:justify-between sm:gap-8"
->
-  <ThemeToggle />
-  <span class="prose mt-2 block">{year} {SITE.author}</span>
+  class="mx-auto w-full md:max-w-4xl p-10 flex justify-between items-center gap-2 "
+>  
+  <span class="md:text-base text-xs">{year} {SITE.author}</span>
+  <SocialLinks />
 </footer>
+
+
+
